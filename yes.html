@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>You said YES 😳❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Open+Sans&display=swap" rel="stylesheet">
+  <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1wta6I5YhcegDKGUjx53fv7GZV4OXH1BM-g&s" type="image/png" /> 
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(to right, #ffe0ec, #fff3f8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .container {
+      background-color: #ffffffcc;
+      padding: 2rem 3rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 500px;
+      z-index: 1;
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      color: #e91e63;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: #444;
+      font-size: 1rem;
+      margin-top: 1rem;
+    }
+
+    button {
+      background-color: #ff8fab;
+      border: none;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      margin: 1rem 0.5rem;
+      font-size: 1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+      background-color: #ff5e91;
+      transform: scale(1.05);
+    }
+
+    /* restored hearts CSS */
+    .hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: url('https://emojiapi.dev/api/v1/1f497/64.png') no-repeat center/contain;
+      animation: float 8s infinite;
+    }
+    @keyframes float {
+      0%   { transform: translateY(100vh) scale(0.5); opacity: 0; }
+      50%  { opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+    }
+
+    #videoContainer {
+      display: none;
+      margin-top: 2rem;
+    }
+
+    video {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 500px) {
+      .container {
+        padding: 1.5rem;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+      button {
+        margin: 0.5rem;
+        padding: 0.5rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- floating hearts container -->
+  <div class="hearts"></div>
+
+  <section class="container">
+    <h1>You said YES 😳❤️</h1>
+    <p>Sorry! I won't do it again..🥹</p>
+    <p>If love were a language, you'd be the only one I’m fluent in. 🥹</p>
+    <p>You and me—like peanut butter and jelly... or like fries and literally anything. 🍟💘</p>
+    <p>I love you more than Wi-Fi... and that’s saying a LOT. 💖😂</p>
+    <p>So come here already—my arms miss you, my heart misses you... even my playlists miss you. 🎶🫶</p>
+
+    <button onclick="showVideo()">Open Video</button>
+    <button onclick="location.href='index.html'">Back to Start 🏠</button>
+
+    <!-- Video Section -->
+    <div id="videoContainer">
+      <video id="loveVideo" controls>
+        <source src="src/video.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </section>
+
+  <script>
+    function showVideo() {
+      const container = document.getElementById('videoContainer');
+      const video = document.getElementById('loveVideo');
+      container.style.display = 'block';
+      video.play();
+    }
+
+    // heart creation logic
+    const heartsContainer = document.querySelector('.hearts');
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (4 + Math.random() * 6) + 's';
+      heartsContainer.appendChild(heart);
+      setTimeout(() => heart.remove(), 8000);
+    }
+    setInterval(createHeart, 400);
+  </script>
+</body>
+</html>
